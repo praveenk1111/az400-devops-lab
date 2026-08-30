@@ -1,0 +1,21 @@
+name: AZ400 CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Validate repository
+        run: |
+          echo "Running AZ-400 CI validation..."
+          test -f README.md
+          test -f docs/az400-notes.md
+          echo "Validation successful!"
